@@ -6,7 +6,7 @@
 /*   By: hmoumani <hmoumani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 00:22:12 by hmoumani          #+#    #+#             */
-/*   Updated: 2019/12/23 21:42:40 by hmoumani         ###   ########.fr       */
+/*   Updated: 2019/12/27 17:23:19 by hmoumani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,10 @@ typedef	struct		s_flgs
 	char			conv;
 	int				prec;
 	int				width;
+	char			fill;
 }					t_flags;
 t_flags				flags;
+int					g_size;
 int				 	count;
 int					ft_atoi(const char *s);
 void				*ft_calloc(size_t count, size_t size);

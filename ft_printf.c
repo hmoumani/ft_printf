@@ -6,7 +6,7 @@
 /*   By: hmoumani <hmoumani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/23 20:41:45 by hmoumani          #+#    #+#             */
-/*   Updated: 2019/12/23 21:23:02 by hmoumani         ###   ########.fr       */
+/*   Updated: 2019/12/27 20:55:30 by hmoumani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_init_flags()
 {
-	flags = (t_flags){0};
+	flags = (t_flags){0, 0, 0, ' '};
 }
 
 void	ft_redirect_conversion(va_list *args)
@@ -39,6 +39,7 @@ int		ft_printf(const char *s, ...)
 	va_list args;
 
 	i = 0;
+	g_size = 0;
 	va_start(args, s);
 	while (s[i])
 	{
@@ -52,6 +53,6 @@ int		ft_printf(const char *s, ...)
 		}
 		i++;
 	}
-	return (1);
+	return (g_size);
 }
 

@@ -6,7 +6,7 @@
 /*   By: hmoumani <hmoumani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 20:54:09 by hmoumani          #+#    #+#             */
-/*   Updated: 2019/12/23 16:45:31 by hmoumani         ###   ########.fr       */
+/*   Updated: 2019/12/27 16:39:01 by hmoumani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	ft_putstr_fd(char *s, int fd)
 		i = 0;
 		while (s[i] != '\0')
 		{
-			write(fd, &s[i++], 1);
+			g_size+= write(fd, &s[i++], 1);
 		}
 	}
 }

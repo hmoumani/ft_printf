@@ -6,7 +6,7 @@
 /*   By: hmoumani <hmoumani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 20:50:00 by hmoumani          #+#    #+#             */
-/*   Updated: 2019/12/23 16:45:23 by hmoumani         ###   ########.fr       */
+/*   Updated: 2019/12/27 16:39:00 by hmoumani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 void	ft_putchar_fd(char c, int fd)
 {
-	write(fd, &c, 1);
+	g_size += write(fd, &c, 1);
 }
