@@ -6,7 +6,7 @@
 /*   By: hmoumani <hmoumani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/23 16:56:08 by hmoumani          #+#    #+#             */
-/*   Updated: 2019/12/27 20:48:48 by hmoumani         ###   ########.fr       */
+/*   Updated: 2020/01/11 18:30:59 by hmoumani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,17 @@ char	*ft_get_string(const char *s, int *j)
 
 	news = NULL;
 	i = 0;
-	while (s[i] != 'd' && s[i] != 'c' && s[i] != 's' && s[i] != 'u' && s[i] != 'i' && s[i] != 'x' && s[i] != 'X' && s[i] != 'p' && s[i] != '%')
+	while (s[i] != 'd' && s[i] != 'c' && s[i] != 's' && s[i] != 'u' && \
+	s[i] != 'i' && s[i] != 'x' && s[i] != 'X' && s[i] != 'p' && s[i] != '%')
 		i++;
 	(*j) = (*j) + i;
 	news = malloc(i + 1);
 	news[i] = 0;
 	flags.conv = s[i];
 	i = 0;
-	while (s[i] != 'd' && s[i] != 'c' && s[i] != 's' && s[i] != 'u' && s[i] != 'i' && s[i] != 'x' && s[i] != 'X' && s[i] != 'p' && s[i] != '%')
-	{	
+	while (s[i] != 'd' && s[i] != 'c' && s[i] != 's' && s[i] != 'u' && \
+	s[i] != 'i' && s[i] != 'x' && s[i] != 'X' && s[i] != 'p' && s[i] != '%')
+	{
 		news[i] = s[i];
 		i++;
 	}
@@ -68,7 +70,6 @@ void	ft_manage_data(char *s, va_list *args)
 		{
 			flags.width = ft_atoi(s);
 			flags.fill = (s[i] == '0' && flags.width) ? '0' : ' ';
-
 		}
 	}
 }

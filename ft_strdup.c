@@ -6,7 +6,7 @@
 /*   By: hmoumani <hmoumani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/13 19:06:34 by hmoumani          #+#    #+#             */
-/*   Updated: 2019/12/23 16:45:34 by hmoumani         ###   ########.fr       */
+/*   Updated: 2020/01/10 18:33:09 by hmoumani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,14 @@ char	*ft_strdup(const char *s)
 {
 	char			*p;
 	unsigned	int	i;
+	unsigned	int	len;
 
 	i = 0;
+	len = ft_strlen(s);
 	p = (char *)ft_calloc(ft_strlen(s) + 1, sizeof(char));
 	if (p == NULL)
 		return (NULL);
-	while (i < ft_strlen(s))
+	while (i < len)
 	{
 		*(p + i) = *(s + i);
 		i++;

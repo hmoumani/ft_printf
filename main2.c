@@ -9,16 +9,22 @@ int main()
   // ft_printf("a%sa", NULL);
   //printf("n = %d",n);
 
-  printf("%d\n",printf("|%.8d|\n",1111));
-  printf("%d\n",  ft_printf("|%.8d|\n",1111));
-  printf("%d\n",printf("|%20d|\n",1111));
-  printf("%d\n",  ft_printf("|%20d|\n",1111));
-  printf("%d\n",printf("|%-20d|\n",1111));
-  printf("%d\n",  ft_printf("|%-20d|\n",1111));
-  printf("%d\n",printf("|%-20d|\n",1111));
-  printf("%d\n",  ft_printf("|%-20d|\n",1111));
-  printf("%d\n",printf("|%020d|\n",1111));
-  printf("%d\n",  ft_printf("|%020d|\n",1111));
+
+
+  ft_printf("%10.8d",1111);
+
+
+
+  // printf("%d\n",printf("|%.8d|\n",1111));
+  // printf("%d\n",  ft_printf("|%.8d|\n",1111));
+  // printf("%d\n",printf("|%20d|\n",1111));
+  // printf("%d\n",  ft_printf("|%20d|\n",1111));
+  // printf("%d\n",printf("|%-20d|\n",1111));
+  // printf("%d\n",  ft_printf("|%-20d|\n",1111));
+  // printf("%d\n",printf("|%-20d|\n",1111));
+  // printf("%d\n",  ft_printf("|%-20d|\n",1111));
+  // printf("%d\n",printf("|%020d|\n",1111));
+  // printf("%d\n",  ft_printf("|%020d|\n",1111));
 
  /* printf("--test1--\n|%-*.*d|\n", 5,-2, 1);
     ft_printf("|%-*.*d|\n", 5, -2, 1);
