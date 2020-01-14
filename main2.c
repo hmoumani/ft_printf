@@ -1,4 +1,5 @@
 #include "ft_printf.h"
+
 int main()
 {
   //char *s_hidden = "hi low\0don't print me lol\0";
@@ -10,8 +11,7 @@ int main()
   //printf("n = %d",n);
 
 
-
-  ft_printf("%10.8d",1111);
+	ft_printf("%*.8d",10,-1);
 
 
 
@@ -41,7 +41,7 @@ int main()
 
    
 
-     printf("--test1--\n|%*.*d|\n", 1, 1, 1);
+    printf("--test1--\n|%*.*d|\n", 1, 1, 1);
     ft_printf("|%*.*d|\n", 1, 1, 1);
 
     printf("--test2--\n|%*.*d|\n", -1, 1, 1);
