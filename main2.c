@@ -1,4 +1,4 @@
-#include "ft_printf.h"
+#include "libftprintf.h"
 
 int main()
 {
@@ -11,7 +11,8 @@ int main()
   //printf("n = %d",n);
 
 
-	ft_printf("%*.8d",10,-1);
+	ft_printf("|%-9.1d|\n", 100);
+	printf("|%-9.1d|", 100);
 
 
 

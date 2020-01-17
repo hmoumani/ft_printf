@@ -6,13 +6,18 @@
 /*   By: hmoumani <hmoumani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/23 17:05:31 by hmoumani          #+#    #+#             */
-/*   Updated: 2019/12/23 17:06:16 by hmoumani         ###   ########.fr       */
+/*   Updated: 2020/01/17 20:17:34 by hmoumani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libftprintf.h"
 
 void	ft_prints(va_list *args)
 {
-	ft_putstr_fd(va_arg(*args, char *), 1);
+	char *s;
+
+	s = va_arg(*args, char *);
+	if (!s)
+		s = ft_strdup("(null)");
+	ft_putstr_fd(s, 1);
 }

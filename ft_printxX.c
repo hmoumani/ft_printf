@@ -6,11 +6,11 @@
 /*   By: hmoumani <hmoumani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/23 21:23:26 by hmoumani          #+#    #+#             */
-/*   Updated: 2019/12/24 15:38:51 by hmoumani         ###   ########.fr       */
+/*   Updated: 2020/01/17 20:12:31 by hmoumani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libftprintf.h"
 
 static void	ft_strrev(char *s)
 {

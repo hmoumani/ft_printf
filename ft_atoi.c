@@ -6,11 +6,11 @@
 /*   By: hmoumani <hmoumani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/11 10:19:39 by hmoumani          #+#    #+#             */
-/*   Updated: 2019/12/23 16:46:04 by hmoumani         ###   ########.fr       */
+/*   Updated: 2020/01/17 20:11:48 by hmoumani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libftprintf.h"
 
 int	ft_atoi(const char *str)
 {

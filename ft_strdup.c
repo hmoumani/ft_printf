@@ -6,11 +6,11 @@
 /*   By: hmoumani <hmoumani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/13 19:06:34 by hmoumani          #+#    #+#             */
-/*   Updated: 2020/01/10 18:33:09 by hmoumani         ###   ########.fr       */
+/*   Updated: 2020/01/17 20:12:35 by hmoumani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libftprintf.h"
 
 char	*ft_strdup(const char *s)
 {

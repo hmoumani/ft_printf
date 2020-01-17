@@ -6,11 +6,11 @@
 /*   By: hmoumani <hmoumani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/23 20:41:45 by hmoumani          #+#    #+#             */
-/*   Updated: 2020/01/14 22:32:15 by hmoumani         ###   ########.fr       */
+/*   Updated: 2020/01/17 21:20:11 by hmoumani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libftprintf.h"
 
 void	ft_init_flags(void)
 {
@@ -41,20 +41,20 @@ int		ft_printf(const char *s, ...)
 	i = 0;
 	g_size = 0;
 	va_start(args, s);
-	// while (s[i])
-	// {
+	while (s[i])
+	{
 		ft_init_flags();
-		// if (s[i] != '%')
-		// 	ft_putchar_fd(s[i], 1);
-		// else
-		// {
-	if (ft_collect_data(s, &i, &args) == -1)
-		return (-1);
-		printf("conv : %c , prec : %d , width : %d , fill : %c , plus ? : %d , minus ? : %d",flags.conv, flags.prec, flags.width, flags.fill, flags.plus, flags.minus);
-			// ft_redirect_conversion(&args);
-		// }
+		if (s[i] != '%')
+			ft_putchar_fd(s[i], 1);
+		else
+		{
+			if (ft_collect_data(s, &i, &args) == -1)
+				return (-1);
+			// printf("conv : %c , prec : %d , width : %d , fill : %c , plus ? : %d , minus ? : %d\n",flags.conv, flags.prec, flags.width, flags.fill, flags.plus, flags.minus);
+			ft_redirect_conversion(&args);
+		}
 		i++;
-	// }
+	}
 	return (g_size);
 }
 

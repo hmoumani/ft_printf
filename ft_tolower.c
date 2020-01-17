@@ -6,11 +6,11 @@
 /*   By: hmoumani <hmoumani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/09 14:36:51 by hmoumani          #+#    #+#             */
-/*   Updated: 2019/12/23 16:45:40 by hmoumani         ###   ########.fr       */
+/*   Updated: 2020/01/17 20:12:37 by hmoumani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libftprintf.h"
 
 int	ft_tolower(int c)
 {

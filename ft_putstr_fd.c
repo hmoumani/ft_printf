@@ -6,11 +6,11 @@
 /*   By: hmoumani <hmoumani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 20:54:09 by hmoumani          #+#    #+#             */
-/*   Updated: 2019/12/27 16:39:01 by hmoumani         ###   ########.fr       */
+/*   Updated: 2020/01/17 20:12:34 by hmoumani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libftprintf.h"
 
 void	ft_putstr_fd(char *s, int fd)
 {
