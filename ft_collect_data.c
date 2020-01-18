@@ -6,7 +6,7 @@
 /*   By: hmoumani <hmoumani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/23 16:56:08 by hmoumani          #+#    #+#             */
-/*   Updated: 2020/01/17 22:27:57 by hmoumani         ###   ########.fr       */
+/*   Updated: 2020/01/18 21:08:50 by hmoumani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ void	ft_haspoint(char *s, char *p, va_list *args)
 	i = 0;
 	*p = 0;
 	p = p + 1;
+	flags.haspoint = 1;
 	// here 
 	ft_flags(&s);
 	if (s[i] == '*')

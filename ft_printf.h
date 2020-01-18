@@ -6,7 +6,7 @@
 /*   By: hmoumani <hmoumani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 00:22:12 by hmoumani          #+#    #+#             */
-/*   Updated: 2020/01/18 17:24:16 by hmoumani         ###   ########.fr       */
+/*   Updated: 2020/01/18 21:07:49 by hmoumani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ typedef	struct		s_flgs
 	char			fill;
 	int				plus;
 	int				minus;
+	int				haspoint;
 }					t_flags;
 t_flags				flags;
 int					g_size;

@@ -6,7 +6,7 @@
 /*   By: hmoumani <hmoumani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/23 17:15:57 by hmoumani          #+#    #+#             */
-/*   Updated: 2020/01/18 17:47:00 by hmoumani         ###   ########.fr       */
+/*   Updated: 2020/01/18 21:08:17 by hmoumani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,25 @@
 
 void	ft_print_prec(int len, char *s)
 {
-	int	i;
-	int 	width;
+	int		i;
+	int		width;
 
 	width = (flags.prec > len) ? ft_absolute_val(flags.width) - flags.prec \
 	: ft_absolute_val(flags.width) - len;
 	i = 0;
-	while (++width < flags.width)
-		g_size += write(1, " ", 1);
-	while (++i < flags.prec - len)
+	if (flags.prec > len && width > 0)
+		while (++width < flags.width - 1)
+			g_size += write(1, " ", 1);
+	else if (flags.width > len)
+		while (i++ < flags.width - len)
+			g_size += write(1, " ", 1);
+	i = 0;
+	while (++i < flags.prec - len + 1)
 		g_size += write(1, "0", 1);
 	ft_putstr_fd(s, 1);
-	while (--width > 0)
-		g_size += write(1, " ", 1);
+	if (flags.prec > len && flags.prec > len + i)
+		while (--width > 0)
+			g_size += write(1, " ", 1);
 }
 
 void	ft_printd_f(int size, int num, char *s)
@@ -45,7 +51,10 @@ void	ft_printd_f(int size, int num, char *s)
 		while (++i < size)
 			g_size += write(1, &(flags.fill), 1);
 	}
-	ft_putstr_fd(s, 1);
+	if (num == 0 && flags.prec == 0 && flags.haspoint)
+		ft_putchar_fd(' ',1);
+	else
+		ft_putstr_fd(s, 1);
 	if (size < 0 && flags.width)
 		while (++size < 0)
 			g_size += write(1, &(flags.fill), 1);

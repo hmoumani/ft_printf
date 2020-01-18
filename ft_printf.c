@@ -6,7 +6,7 @@
 /*   By: hmoumani <hmoumani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/23 20:41:45 by hmoumani          #+#    #+#             */
-/*   Updated: 2020/01/17 21:20:11 by hmoumani         ###   ########.fr       */
+/*   Updated: 2020/01/18 21:07:53 by hmoumani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_init_flags(void)
 {
-	flags = (t_flags){ 0, 0, 0, ' ', 0, 0};
+	flags = (t_flags){ 0, 0, 0, ' ', 0, 0, 0};
 }
 
 void	ft_redirect_conversion(va_list *args)

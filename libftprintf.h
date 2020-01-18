@@ -26,6 +26,7 @@ typedef	struct		s_flgs
 	char			fill;
 	int				plus;
 	int				minus;
+	int				haspoint;
 }					t_flags;
 t_flags				flags;
 int					g_size;
