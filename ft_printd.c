@@ -6,11 +6,28 @@
 /*   By: hmoumani <hmoumani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/23 17:15:57 by hmoumani          #+#    #+#             */
-/*   Updated: 2020/01/17 22:46:59 by hmoumani         ###   ########.fr       */
+/*   Updated: 2020/01/18 17:47:00 by hmoumani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
+
+void	ft_print_prec(int len, char *s)
+{
+	int	i;
+	int 	width;
+
+	width = (flags.prec > len) ? ft_absolute_val(flags.width) - flags.prec \
+	: ft_absolute_val(flags.width) - len;
+	i = 0;
+	while (++width < flags.width)
+		g_size += write(1, " ", 1);
+	while (++i < flags.prec - len)
+		g_size += write(1, "0", 1);
+	ft_putstr_fd(s, 1);
+	while (--width > 0)
+		g_size += write(1, " ", 1);
+}
 
 void	ft_printd_f(int size, int num, char *s)
 {
@@ -42,12 +59,15 @@ void	ft_width(char *s, int num)
 	size = 0;
 	len = ft_strlen(s);
 	if (!flags.prec)
+	{
 		size = (flags.width > 0) ? flags.width - len + 1 \
 		: flags.width + len - 1;
+		ft_printd_f(size, num, s);
+	}
 	else
-		size = (flags.width > 0) ? flags.prec - len + 1 \
-		: flags.prec + len - 1;
-	ft_printd_f(size, num, s);
+	{
+		ft_print_prec((int)len, s);
+	}
 }
 
 void	ft_printd(va_list *args)

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libftprintf.h                                        :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmoumani <hmoumani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 00:22:12 by hmoumani          #+#    #+#             */
-/*   Updated: 2020/01/14 22:32:52 by hmoumani         ###   ########.fr       */
+/*   Updated: 2020/01/18 17:24:16 by hmoumani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,7 @@ void				ft_printd(va_list *args);
 void            	ft_printxX(va_list *args);
 char				*ft_dectohexa(size_t n);
 char				*ft_strchr(const char *s, int c);
+int					ft_absolute_val(int n);
+
 
 #endif

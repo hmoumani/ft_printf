@@ -11,8 +11,8 @@ int main()
   //printf("n = %d",n);
 
 
-	ft_printf("|%-9.1d|\n", 100);
-	printf("|%-9.1d|", 100);
+	printf(" *********  %d\n", ft_printf("|%2.3d|", 100));
+	printf(" *********  %d", printf("|%2.3d|", 100));
 
 
 

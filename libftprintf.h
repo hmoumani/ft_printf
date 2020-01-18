@@ -51,5 +51,6 @@ void				ft_printd(va_list *args);
 void            	ft_printxX(va_list *args);
 char				*ft_dectohexa(size_t n);
 char				*ft_strchr(const char *s, int c);
+int					ft_absolute_val(int n);
 
 #endif
