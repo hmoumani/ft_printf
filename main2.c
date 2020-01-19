@@ -11,10 +11,10 @@ int main()
   //printf("n = %d",n);
 
 
-	printf(" *********  %d\n", ft_printf("%4.0d", 0));
-	printf(" *********  %d", printf("%4.0d", 0));
-
-
+	// printf(" *********  %d\n", ft_printf("%04.3d", 100));
+	// printf(" *********  %d\n", printf("%04.3d", 100));
+	printf(" *********  %d\n", ft_printf("%0*.*d", 5, -5, -15));
+	printf(" *********  %d\n", printf("%0*.*d", 5, -5, -15));
 
   // printf("%d\n",printf("|%.8d|\n",1111));
   // printf("%d\n",  ft_printf("|%.8d|\n",1111));
