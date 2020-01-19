@@ -6,7 +6,7 @@
 /*   By: hmoumani <hmoumani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/23 17:15:57 by hmoumani          #+#    #+#             */
-/*   Updated: 2020/01/19 21:18:56 by hmoumani         ###   ########.fr       */
+/*   Updated: 2020/01/19 22:37:58 by hmoumani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,23 @@ void	ft_print_prec(int len, char *s)
 	int		width;
 
 	width = (flags.prec > len) ? ft_absolute_val(flags.width) - (ft_absolute_val(flags.width) - flags.prec) - 1	: ft_absolute_val(flags.width) - len + 1;
-	// flags.fill = (ft_absolute_val(flags.prec) == len && flags.width > len && flags.fill == '0') ? ' ' : '0';
+	(flags.prec > 0 && ft_absolute_val(flags.prec) <= len && flags.width > len && flags.fill == '0') ? flags.fill =  ' ' : 1;
 	i = 0;
 	(s[0] == '-') ? width++ : 1;
 	if (flags.prec > len && width > 0)
 		while (++width < flags.width)
 			g_size += write(1, " ", 1);
 	else if (flags.width > len)
+	{
+		if (s[0] == '-' && flags.width > len && ft_absolute_val(flags.prec) && flags.fill == '0')
+		{
+			s++;
+			ft_putchar_fd('-', 1);
+			width--;
+		}
 		while (i++ < flags.width - len)
 			g_size += write(1, &flags.fill, 1);
+	}
 	i = 0;
 	if (s[0] == '-')
 	{
