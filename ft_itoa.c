@@ -6,7 +6,7 @@
 /*   By: hmoumani <hmoumani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 14:56:16 by hmoumani          #+#    #+#             */
-/*   Updated: 2020/01/17 20:12:10 by hmoumani         ###   ########.fr       */
+/*   Updated: 2020/01/19 22:53:27 by hmoumani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static	int		ft_getdigit(long n, int pos)
 	return (n % 10);
 }
 
-char			*ft_itoa(int n)
+char			*ft_itoa(long n)
 {
 	int		size;
 	int		i;

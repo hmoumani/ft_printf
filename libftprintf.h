@@ -34,7 +34,7 @@ int				 	count;
 int					ft_atoi(const char *s);
 void				*ft_calloc(size_t count, size_t size);
 int					ft_isalpha(int c);
-char				*ft_itoa(int n);
+char				*ft_itoa(long n);
 void				ft_putstr_fd(char *s, int fd);
 char				*ft_strdup(const char *s1);
 size_t				ft_strlen(const char *s);
