@@ -6,7 +6,7 @@
 /*   By: hmoumani <hmoumani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/23 20:41:45 by hmoumani          #+#    #+#             */
-/*   Updated: 2020/01/18 21:07:53 by hmoumani         ###   ########.fr       */
+/*   Updated: 2020/01/19 23:46:15 by hmoumani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	ft_redirect_conversion(va_list *args)
 		ft_printd(args);
 	if (flags.conv == 's')
 		ft_prints(args);
-	if (flags.conv == 'c')
+	if (flags.conv == 'c' || flags.conv == '%')
 		ft_printc(args);
 	if (flags.conv == 'u')
 		ft_printu(args);
