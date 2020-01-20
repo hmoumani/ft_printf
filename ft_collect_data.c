@@ -6,7 +6,7 @@
 /*   By: hmoumani <hmoumani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/23 16:56:08 by hmoumani          #+#    #+#             */
-/*   Updated: 2020/01/21 00:04:36 by hmoumani         ###   ########.fr       */
+/*   Updated: 2020/01/21 00:09:32 by hmoumani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,22 +37,32 @@ char	*ft_get_string(const char *s, int *j)
 	return (news);
 }
 
-void	ft_flags(char **s)
+void	ft_flags(char **s, int cas)
 {
-	while (1)
-	{
-		if (**s == '+')
-			flags.plus = 1;
-		else if (**s == '0')
-			flags.fill = '0';
-		else if (**s == '-' && (flags.conv == 'p' || flags.conv == 'c'))
-			flags.minus = 1;
-		else if (**s == '-' && flags.conv == '%')
-			flags.minus = 1;
-		else
-			break ;
-		(*s)++;
-	}
+	if (cas)
+		while (1)
+		{
+			if (**s == '+')
+				flags.plus = 1;
+			else if (**s == '0')
+				flags.fill = '0';
+			else if (**s == '-' && (flags.conv == 'p' || flags.conv == 'c'))
+				flags.minus = 1;
+			else if (**s == '-' && flags.conv == '%')
+				flags.minus = 1;
+			else
+				break ;
+			(*s)++;
+		}
+	else
+		while (1)
+		{
+			if (**s == '-' && *(*s + 1) == '-' && flags.conv == 'd')
+				flags.minus = 1;
+			else
+				break ;
+			(*s)++;
+		}
 }
 
 void	ft_haspoint(char *s, char *p, va_list *args)
@@ -64,7 +74,7 @@ void	ft_haspoint(char *s, char *p, va_list *args)
 	p = p + 1;
 	flags.haspoint = 1;
 	// here 
-	ft_flags(&s);
+	ft_flags(&s, 1);
 	if (s[i] == '*')
 		flags.width = va_arg(*args, int);
 	else
@@ -91,6 +101,7 @@ void	ft_manage_data(char *s, va_list *args)
 			flags.width = va_arg(*args, int);
 		else
 		{
+			ft_flags(&s, 0);
 			flags.width = ft_atoi(s);
 			flags.fill = (s[i] == '0' && flags.width) ? '0' : ' ';
 		}

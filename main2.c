@@ -11,12 +11,12 @@ int main()
   //printf("n = %d",n);
 
 
-	printf(" *********  %d\n", ft_printf("%---15d",20));
-	printf(" *********  %d\n",   printf("%---15d", 20));
+	// printf(" *********  %d\n", ft_printf("ultimate2 %*d %*s %*x %*X %*i %*u\n", 1, 5000, 1, "hey", 10, 54700, 1, 300, 10000, -55, 1, -60));
+	// printf(" *********  %d\n",   printf("ultimate2 %*d %*s %*x %*X %*i %*u\n", 1, 5000, 1, "hey", 10, 54700, 1, 300, 10000, -55, 1, -60));
 
 
-	// printf(" *********  %d\n", ft_printf("TEST TEST 0000%%%*.*s%%%-15.8dTEST%-15.8u0000000\t%%%15%%.3% %---15d %00015x", 7,5, "ABC",15,0,20,0x99));
-	// printf(" *********  %d\n", printf("TEST TEST 0000%%%*.*s%%%-15.8dTEST%-15.8u0000000\t%%%15%%.3% %---15d %00015x", 7,5, "ABC",15,0,20,0x99));
+	printf(" *********  %d\n", ft_printf("%*d", 1, 5000));
+	printf(" *********  %d\n", printf("%*d", 1, 5000));
 
 
   // printf("%d\n",printf("|%.8d|\n",1111));

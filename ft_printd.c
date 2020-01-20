@@ -6,7 +6,7 @@
 /*   By: hmoumani <hmoumani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/23 17:15:57 by hmoumani          #+#    #+#             */
-/*   Updated: 2020/01/20 23:53:41 by hmoumani         ###   ########.fr       */
+/*   Updated: 2020/01/21 00:21:30 by hmoumani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ int		ft_printd_f(int size, int num, char *s, int len)
 		return (1);
 	else
 		ft_putstr_fd(s, 1);
-	if (size < 0 && flags.width)
+	if (size < 0 && flags.width && flags.width < 0)
 		while (++size < 0)
 			g_size += write(1, &(flags.fill), 1);
 	return (1);
