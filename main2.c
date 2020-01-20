@@ -11,8 +11,12 @@ int main()
   //printf("n = %d",n);
 
 
-	printf(" *********  %d\n", ft_printf("%-5.u", -5));
-	printf(" *********  %d\n", printf("%-5.u", -5));
+	// printf(" *********  %d\n", ft_printf("%+10.d",100));
+	// printf(" *********  %d\n", printf("%+10.d", 100));
+
+
+	printf(" *********  %d\n", ft_printf("%-.p", (void *)100));
+	printf(" *********  %d\n", printf("%-.p", (void *)100));
 
 
   // printf("%d\n",printf("|%.8d|\n",1111));
