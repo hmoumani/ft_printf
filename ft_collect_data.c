@@ -6,7 +6,7 @@
 /*   By: hmoumani <hmoumani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/23 16:56:08 by hmoumani          #+#    #+#             */
-/*   Updated: 2020/01/20 15:44:01 by hmoumani         ###   ########.fr       */
+/*   Updated: 2020/01/21 00:04:36 by hmoumani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,9 @@ void	ft_flags(char **s)
 			flags.plus = 1;
 		else if (**s == '0')
 			flags.fill = '0';
-		else if (**s == '-' && flags.conv == 'p')
+		else if (**s == '-' && (flags.conv == 'p' || flags.conv == 'c'))
+			flags.minus = 1;
+		else if (**s == '-' && flags.conv == '%')
 			flags.minus = 1;
 		else
 			break ;

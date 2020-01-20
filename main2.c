@@ -11,12 +11,12 @@ int main()
   //printf("n = %d",n);
 
 
-	// printf(" *********  %d\n", ft_printf("%+10.d",100));
-	// printf(" *********  %d\n", printf("%+10.d", 100));
+	printf(" *********  %d\n", ft_printf("%---15d",20));
+	printf(" *********  %d\n",   printf("%---15d", 20));
 
 
-	printf(" *********  %d\n", ft_printf("a%-10.pa", (void *)0x0));
-	printf(" *********  %d\n", printf("a%-10.pa", (void *)0x0));
+	// printf(" *********  %d\n", ft_printf("TEST TEST 0000%%%*.*s%%%-15.8dTEST%-15.8u0000000\t%%%15%%.3% %---15d %00015x", 7,5, "ABC",15,0,20,0x99));
+	// printf(" *********  %d\n", printf("TEST TEST 0000%%%*.*s%%%-15.8dTEST%-15.8u0000000\t%%%15%%.3% %---15d %00015x", 7,5, "ABC",15,0,20,0x99));
 
 
   // printf("%d\n",printf("|%.8d|\n",1111));
