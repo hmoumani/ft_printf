@@ -6,7 +6,7 @@
 /*   By: hmoumani <hmoumani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/23 17:15:57 by hmoumani          #+#    #+#             */
-/*   Updated: 2020/01/21 03:27:49 by hmoumani         ###   ########.fr       */
+/*   Updated: 2020/01/21 07:51:50 by hmoumani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,12 +45,15 @@ void		ft_print_prec(int len, char *s)
 {
 	int		i;
 	int		width;
+	int		opt;
 
+	opt = 0;
 	ft_first_part(len, &width, &s);
 	i = 0;
 	if (s[0] == '-')
 	{
 		s++;
+		opt = 1;
 		ft_putchar_fd('-', 1);
 		width--;
 		i--;
@@ -58,6 +61,9 @@ void		ft_print_prec(int len, char *s)
 	while (++i < g_flags.prec - len + 1)
 		g_size += write(1, "0", 1);
 	ft_putstr_fd(s, 1);
+	(len < g_flags.prec && g_flags.width < 0 && g_flags.prec > 0 && ft_absolute_val(g_flags.width) > \
+	g_flags.prec) ? width = ft_absolute_val(g_flags.width) - ft_getmax(g_flags.prec, len) + 1: 1;
+	(opt && ft_absolute_val(g_flags.width) > ft_absolute_val(g_flags.prec)) ? width -- : 1;
 	if (g_flags.width * -1 > len + i)
 		while (--width > 0 && g_flags.width < 0)
 			g_size += write(1, " ", 1);
@@ -65,6 +71,9 @@ void		ft_print_prec(int len, char *s)
 
 int			ft_printd_f(int size, int num, char *s, int i)
 {
+	int len;
+
+	len = ft_strlen(s);
 	if (size > 0 && g_flags.width)
 	{
 		if (num < 0 && g_flags.fill == '0' && !g_flags.haspoint)
@@ -73,6 +82,7 @@ int			ft_printd_f(int size, int num, char *s, int i)
 			num *= -1;
 			s++;
 		}
+		(g_flags.width < len && s[0] == '-') ? i++ : 1;
 		while (++i < size && !g_flags.haspoint)
 			g_size += write(1, &(g_flags.fill), 1);
 		while (++i <= size && g_flags.haspoint)
