@@ -6,7 +6,7 @@
 /*   By: hmoumani <hmoumani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/23 17:05:31 by hmoumani          #+#    #+#             */
-/*   Updated: 2020/01/20 17:50:18 by hmoumani         ###   ########.fr       */
+/*   Updated: 2020/01/21 00:27:40 by hmoumani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	ft_puts_fd(char *s, int fd, int prec)
 	int i;
 
 	i = 0;
-	prec  = ft_absolute_val(prec);
+	prec = ft_absolute_val(prec);
 	while (s[i] && (i < prec || !flags.haspoint))
 	{
 		g_size += write(fd, &s[i++], 1);
@@ -28,8 +28,8 @@ void	ft_width_s(char *s, int len)
 {
 	int width;
 
-	len  = (len > flags.prec && flags.haspoint) ? flags.prec : len;
-	width = (flags.width >= len) ? flags.width - len: flags.width + len;
+	len = (len > flags.prec && flags.haspoint) ? flags.prec : len;
+	width = (flags.width >= len) ? flags.width - len : flags.width + len;
 	if (flags.width >= len && flags.width)
 		while (--width >= 0)
 			ft_putchar_fd(' ', 1);

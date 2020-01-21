@@ -1,27 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_strrev.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmoumani <hmoumani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/15 20:54:09 by hmoumani          #+#    #+#             */
-/*   Updated: 2020/01/21 00:53:33 by hmoumani         ###   ########.fr       */
+/*   Created: 2020/01/21 00:47:39 by hmoumani          #+#    #+#             */
+/*   Updated: 2020/01/21 00:48:19 by hmoumani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-void	ft_putstr_fd(char *s, int fd)
+void	ft_strrev(char *s)
 {
-	int i;
+	char	temp;
+	int		i;
+	int		len;
 
-	if (s)
+	i = 0;
+	len = ft_strlen(s) - 1;
+	while (i <= len / 2)
 	{
-		i = 0;
-		while (s[i] != '\0')
-		{
-			g_size += write(fd, &s[i++], 1);
-		}
+		temp = s[i];
+		s[i] = s[len - i];
+		s[len - i] = temp;
+		i++;
 	}
 }

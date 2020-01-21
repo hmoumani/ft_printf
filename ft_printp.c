@@ -6,7 +6,7 @@
 /*   By: hmoumani <hmoumani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/23 16:59:46 by hmoumani          #+#    #+#             */
-/*   Updated: 2020/01/20 22:42:27 by hmoumani         ###   ########.fr       */
+/*   Updated: 2020/01/21 00:53:51 by hmoumani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,36 +35,20 @@ void	ft_width_p(char *s, int len, size_t p)
 {
 	int width;
 
-	width = (flags.width >= len) ? flags.width - len: flags.width + len;
+	width = (flags.width >= len) ? flags.width - len : flags.width + len;
 	if (!p && flags.haspoint && width > 0)
 		width++;
 	else if (!p && flags.haspoint && width < 0)
 		width--;
-	(flags.minus && flags.width > 0) ? width = (-1 * width) + 1: 1;
+	(flags.minus && flags.width > 0) ? width = (-1 * width) + 1 : 1;
 	if (flags.width >= len && flags.width)
 		while (--width >= 0)
 			ft_putchar_fd(' ', 1);
 	ft_putp_fd(s, 1, p);
-	if (((flags.width < 0 || (flags.minus && flags.haspoint)) || (flags.haspoint && flags.width < 0)) && flags.width)
+	if (((flags.width < 0 || (flags.minus && flags.haspoint)) || \
+	(flags.haspoint && flags.width < 0)) && flags.width)
 		while (++width <= 0)
 			ft_putchar_fd(' ', 1);
-}
-
-void	ft_strrev(char *s)
-{
-	char	temp;
-	int		i;
-	int		len;
-
-	i = 0;
-	len = ft_strlen(s) - 1;
-	while (i <= len / 2)
-	{
-		temp = s[i];
-		s[i] = s[len - i];
-		s[len - i] = temp;
-		i++;
-	}
 }
 
 char	*ft_dectohexa(size_t n)
@@ -100,12 +84,10 @@ void	ft_printp(va_list *args)
 
 	p = va_arg(*args, size_t);
 	s = ft_dectohexa(p);
-
 	(flags.prec < 0) ? flags.haspoint = 0 : 1;
 	if (!s)
 	{
 		s = ft_strdup("(null)");
 	}
 	ft_width_p(s, (int)ft_strlen(s) + 2, p);
-
 }

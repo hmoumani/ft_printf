@@ -6,35 +6,47 @@
 /*   By: hmoumani <hmoumani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/23 17:15:57 by hmoumani          #+#    #+#             */
-/*   Updated: 2020/01/21 00:21:30 by hmoumani         ###   ########.fr       */
+/*   Updated: 2020/01/21 01:19:01 by hmoumani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-void	ft_print_prec(int len, char *s)
+void		ft_first_part(int len, int *width, char **s)
 {
-	int		i;
-	int		width;
+	int i;
 
-	width = (flags.prec > len) ? ft_absolute_val(flags.width) - (ft_absolute_val(flags.width) - flags.prec) - 1	: ft_absolute_val(flags.width) - len + 1;
-	(flags.prec > 0 && ft_absolute_val(flags.prec) <= len && flags.width > len && flags.fill == '0') ? flags.fill =  ' ' : 1;
 	i = 0;
-	(s[0] == '-') ? width++ : 1;
-	if (flags.prec > len && width > 0)
-		while (++width < flags.width)
+	*width = (flags.prec > len) ? ft_absolute_val(flags.width) - \
+	(ft_absolute_val(flags.width) - flags.prec) - 1 : \
+	ft_absolute_val(flags.width) - len + 1;
+	(flags.prec > 0 && ft_absolute_val(flags.prec) <= len && flags.width > len \
+	&& flags.fill == '0') ? flags.fill = ' ' : 1;
+	i = 0;
+	(*s[0] == '-') ? (*width)++ : 1;
+	if (flags.prec > len && (*width) > 0)
+		while (++(*width) < flags.width)
 			g_size += write(1, " ", 1);
 	else if (flags.width > len)
 	{
-		if (s[0] == '-' && flags.width > len && ft_absolute_val(flags.prec) && flags.fill == '0')
+		if (*s[0] == '-' && flags.width > len && ft_absolute_val(flags.prec) \
+		&& flags.fill == '0')
 		{
-			s++;
+			(*s)++;
 			ft_putchar_fd('-', 1);
 			width--;
 		}
 		while (i++ < flags.width - len)
 			g_size += write(1, &flags.fill, 1);
 	}
+}
+
+void		ft_print_prec(int len, char *s)
+{
+	int		i;
+	int		width;
+
+	ft_first_part(len, &width, &s);
 	i = 0;
 	if (s[0] == '-')
 	{
@@ -51,13 +63,8 @@ void	ft_print_prec(int len, char *s)
 			g_size += write(1, " ", 1);
 }
 
-int		ft_printd_f(int size, int num, char *s, int len)
+int			ft_printd_f(int size, int num, char *s, int i)
 {
-	int i;
-
-	i = 0;
-	if (flags.haspoint)
-		flags.fill = (flags.fill == '0' && flags.prec > len) ? '0' : ' ';
 	if (size > 0 && flags.width)
 	{
 		if (num < 0 && flags.fill == '0' && !flags.haspoint)
@@ -83,7 +90,7 @@ int		ft_printd_f(int size, int num, char *s, int len)
 	return (1);
 }
 
-void	ft_width(char *s, int num)
+void		ft_width(char *s, int num)
 {
 	int		size;
 	size_t	len;
@@ -92,9 +99,12 @@ void	ft_width(char *s, int num)
 	len = ft_strlen(s);
 	if (!flags.prec)
 	{
+		if (flags.haspoint)
+			flags.fill = (flags.fill == '0' && flags.prec > \
+			(int)len) ? '0' : ' ';
 		size = (flags.width > 0) ? flags.width - len + 1 \
 		: flags.width + len - 1;
-		ft_printd_f(size, num, s, len);
+		ft_printd_f(size, num, s, 0);
 	}
 	else
 	{
@@ -102,7 +112,7 @@ void	ft_width(char *s, int num)
 	}
 }
 
-void	ft_printd(va_list *args)
+void		ft_printd(va_list *args)
 {
 	char	*s;
 	int		num;

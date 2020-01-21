@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printu.c                                        :+:      :+:    :+:   */
+/*   ft_printx.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmoumani <hmoumani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/23 17:08:49 by hmoumani          #+#    #+#             */
-/*   Updated: 2020/01/21 00:32:56 by hmoumani         ###   ########.fr       */
+/*   Created: 2019/12/23 21:23:26 by hmoumani          #+#    #+#             */
+/*   Updated: 2020/01/21 00:52:00 by hmoumani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-void	ft_print_precu(int len, char *s)
+static	void	ft_print_precx(int len, char *s)
 {
 	int		i;
 	int		width;
@@ -20,9 +20,10 @@ void	ft_print_precu(int len, char *s)
 	width = (flags.prec > len) ? ft_absolute_val(flags.width) - \
 	(ft_absolute_val(flags.width) - flags.prec) - 1 : \
 	ft_absolute_val(flags.width) - len + 1;
-	(flags.prec > 0 && ft_absolute_val(flags.prec) <= len && flags.width > \
-	len && flags.fill == '0') ? flags.fill = ' ' : 1;
+	(flags.prec > 0 && ft_absolute_val(flags.prec) <= len && \
+	flags.width > len && flags.fill == '0') ? flags.fill = ' ' : 1;
 	i = 0;
+	(s[0] == '-') ? width++ : 1;
 	if (flags.prec > len && width > 0)
 		while (++width < flags.width)
 			g_size += write(1, " ", 1);
@@ -40,7 +41,7 @@ void	ft_print_precu(int len, char *s)
 			g_size += write(1, " ", 1);
 }
 
-int		ft_printd_u(int size, int num, char *s, int len)
+static	int		ft_printd_x(int size, int num, char *s, int len)
 {
 	int i;
 
@@ -66,7 +67,7 @@ int		ft_printd_u(int size, int num, char *s, int len)
 	return (1);
 }
 
-void	ft_width_u(char *s, int num)
+static	void	ft_width_x(char *s, int num)
 {
 	int		size;
 	size_t	len;
@@ -77,20 +78,46 @@ void	ft_width_u(char *s, int num)
 	{
 		size = (flags.width > 0) ? flags.width - len + 1 \
 		: flags.width + len - 1;
-		ft_printd_u(size, num, s, len);
+		ft_printd_x(size, num, s, len);
 	}
 	else
 	{
-		ft_print_precu((int)len, s);
+		ft_print_precx((int)len, s);
 	}
 }
 
-void	ft_printu(va_list *args)
+static char		*ft_dectohexax(unsigned int n)
 {
-	unsigned int	u;
-	char			*s;
+	char			*hexadecinum;
+	unsigned int	i;
+	unsigned int	temp;
 
-	u = va_arg(*args, unsigned int);
-	s = ft_itoa(u);
-	ft_width_u(s, u);
+	i = 0;
+	if (!(hexadecinum = ft_calloc(100, sizeof(char))))
+		return (NULL);
+	hexadecinum[0] = '0';
+	while (n != 0)
+	{
+		temp = n % 16;
+		if (temp < 10)
+			hexadecinum[i] = temp + 48;
+		else
+			hexadecinum[i] = temp + 55;
+		n = n / 16;
+		if (flags.conv == 'x' || flags.conv == 'p')
+			hexadecinum[i] = ft_tolower(hexadecinum[i]);
+		i++;
+	}
+	ft_strrev(hexadecinum);
+	return (hexadecinum);
+}
+
+void			ft_printx(va_list *args)
+{
+	size_t	n;
+	char	*s;
+
+	n = va_arg(*args, size_t);
+	s = ft_dectohexax(n);
+	ft_width_x(s, n);
 }

@@ -6,7 +6,7 @@
 /*   By: hmoumani <hmoumani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/23 16:56:08 by hmoumani          #+#    #+#             */
-/*   Updated: 2020/01/21 00:09:32 by hmoumani         ###   ########.fr       */
+/*   Updated: 2020/01/21 00:25:43 by hmoumani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,6 @@ void	ft_haspoint(char *s, char *p, va_list *args)
 	*p = 0;
 	p = p + 1;
 	flags.haspoint = 1;
-	// here 
 	ft_flags(&s, 1);
 	if (s[i] == '*')
 		flags.width = va_arg(*args, int);
@@ -95,8 +94,6 @@ void	ft_manage_data(char *s, va_list *args)
 		ft_haspoint(s, p, args);
 	else
 	{
-		//here
-		// ft_flags(&s);
 		if (s[i] == '*')
 			flags.width = va_arg(*args, int);
 		else
@@ -119,4 +116,3 @@ int		ft_collect_data(const char *s, int *i, va_list *args)
 	free(newstr);
 	return (1);
 }
-

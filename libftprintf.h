@@ -49,9 +49,10 @@ void				ft_prints(va_list *args);
 void				ft_printu(va_list *args);
 void				ft_printc(va_list *args);
 void				ft_printd(va_list *args);
-void            	ft_printxX(va_list *args);
+void            	ft_printx(va_list *args);
 char				*ft_dectohexa(size_t n);
 char				*ft_strchr(const char *s, int c);
 int					ft_absolute_val(int n);
+void				ft_strrev(char *s);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: hmoumani <hmoumani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/23 20:41:45 by hmoumani          #+#    #+#             */
-/*   Updated: 2020/01/19 23:46:15 by hmoumani         ###   ########.fr       */
+/*   Updated: 2020/01/21 00:45:14 by hmoumani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	ft_redirect_conversion(va_list *args)
 	if (flags.conv == 'p')
 		ft_printp(args);
 	if (flags.conv == 'x' || flags.conv == 'X')
-		ft_printxX(args);
+		ft_printx(args);
 }
 
 int		ft_printf(const char *s, ...)
@@ -50,11 +50,9 @@ int		ft_printf(const char *s, ...)
 		{
 			if (ft_collect_data(s, &i, &args) == -1)
 				return (-1);
-			// printf("conv : %c , prec : %d , width : %d , fill : %c , plus ? : %d , minus ? : %d\n",flags.conv, flags.prec, flags.width, flags.fill, flags.plus, flags.minus);
 			ft_redirect_conversion(&args);
 		}
 		i++;
 	}
 	return (g_size);
 }
-
