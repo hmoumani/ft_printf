@@ -6,7 +6,7 @@
 /*   By: hmoumani <hmoumani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 00:22:12 by hmoumani          #+#    #+#             */
-/*   Updated: 2020/01/21 07:46:45 by hmoumani         ###   ########.fr       */
+/*   Updated: 2020/01/21 20:22:49 by hmoumani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,9 @@ int					ft_printd(va_list *args);
 int					ft_printx(va_list *args);
 char				*ft_dectohexa(size_t n);
 char				*ft_strchr(const char *s, int c);
-int					ft_absolute_val(int n);
+int					ft_abs(int n);
 void				ft_strrev(char *s);
-int     			ft_getmax(int n, int n1);
+int					ft_getmax(int n, int n1);
 void				ft_flags(char **s, int cas);
-
 
 #endif

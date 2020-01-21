@@ -6,7 +6,7 @@
 /*   By: hmoumani <hmoumani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/23 16:56:08 by hmoumani          #+#    #+#             */
-/*   Updated: 2020/01/21 20:01:43 by hmoumani         ###   ########.fr       */
+/*   Updated: 2020/01/21 20:14:34 by hmoumani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,8 @@ void	ft_manage_data(char *s, va_list *args)
 		{
 			g_flags.width = va_arg(*args, int);
 			(g_flags.width < 0 && g_flags.fill == '0') ? g_flags.fill = ' ' : 1;
-			(g_flags.minus && g_flags.width > 0 && (g_flags.conv == 'd' || g_flags.conv == 's')) ? g_flags.width *= -1 : 1;
+			(g_flags.minus && g_flags.width > 0 && (g_flags.conv == 'd' \
+			|| g_flags.conv == 's')) ? g_flags.width *= -1 : 1;
 		}
 		else
 		{

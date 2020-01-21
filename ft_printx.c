@@ -6,7 +6,7 @@
 /*   By: hmoumani <hmoumani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/23 21:23:26 by hmoumani          #+#    #+#             */
-/*   Updated: 2020/01/21 03:30:31 by hmoumani         ###   ########.fr       */
+/*   Updated: 2020/01/21 20:15:51 by hmoumani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@ static	void	ft_print_precx(int len, char *s)
 	int		i;
 	int		width;
 
-	width = (g_flags.prec > len) ? ft_absolute_val(g_flags.width) - \
-	(ft_absolute_val(g_flags.width) - g_flags.prec) - 1 : \
-	ft_absolute_val(g_flags.width) - len + 1;
-	(g_flags.prec > 0 && ft_absolute_val(g_flags.prec) <= len && \
+	width = (g_flags.prec > len) ? ft_abs(g_flags.width) - \
+	(ft_abs(g_flags.width) - g_flags.prec) - 1 : \
+	ft_abs(g_flags.width) - len + 1;
+	(g_flags.prec > 0 && ft_abs(g_flags.prec) <= len && \
 	g_flags.width > len && g_flags.fill == '0') ? g_flags.fill = ' ' : 1;
 	i = 0;
 	(s[0] == '-') ? width++ : 1;
@@ -62,7 +62,7 @@ static	int		ft_printd_x(int size, int num, char *s, int len)
 		return (1);
 	else
 		ft_putstr_fd(s, 1);
-	if (size < 0 && g_flags.width && ft_absolute_val(g_flags.width) > len)
+	if (size < 0 && g_flags.width && ft_abs(g_flags.width) > len)
 		while (++size < 0)
 			g_size += write(1, &(g_flags.fill), 1);
 	return (1);

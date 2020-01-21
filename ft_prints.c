@@ -6,7 +6,7 @@
 /*   By: hmoumani <hmoumani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/23 17:05:31 by hmoumani          #+#    #+#             */
-/*   Updated: 2020/01/21 03:26:49 by hmoumani         ###   ########.fr       */
+/*   Updated: 2020/01/21 20:15:49 by hmoumani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	ft_puts_fd(char *s, int fd, int prec)
 	int i;
 
 	i = 0;
-	prec = ft_absolute_val(prec);
+	prec = ft_abs(prec);
 	while (s[i] && (i < prec || !g_flags.haspoint))
 	{
 		g_size += write(fd, &s[i++], 1);
