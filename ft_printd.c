@@ -6,7 +6,7 @@
 /*   By: hmoumani <hmoumani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/23 17:15:57 by hmoumani          #+#    #+#             */
-/*   Updated: 2020/01/21 07:51:50 by hmoumani         ###   ########.fr       */
+/*   Updated: 2020/01/21 19:54:08 by hmoumani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void		ft_first_part(int len, int *width, char **s)
 	&& g_flags.width > len && g_flags.fill == '0') ? g_flags.fill = ' ' : 1;
 	i = 0;
 	(*s[0] == '-') ? (*width)++ : 1;
+	(*s[0] == '-' && g_flags.fill < '0' && g_flags.prec >= len) ? i++ : 1;
 	if (g_flags.prec > len && (*width) > 0)
 		while (++(*width) < g_flags.width)
 			g_size += write(1, " ", 1);
@@ -55,7 +56,8 @@ void		ft_print_prec(int len, char *s)
 		s++;
 		opt = 1;
 		ft_putchar_fd('-', 1);
-		width--;
+		if (ft_absolute_val(g_flags.width) <= ft_absolute_val(g_flags.prec))
+			width--;
 		i--;
 	}
 	while (++i < g_flags.prec - len + 1)

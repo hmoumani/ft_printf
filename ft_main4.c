@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_main4.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akhalidy <akhalidy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hmoumani <hmoumani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/20 13:47:43 by keddib            #+#    #+#             */
-/*   Updated: 2019/12/24 10:54:27 by akhalidy         ###   ########.fr       */
+/*   Updated: 2020/01/21 20:02:57 by hmoumani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,8 +103,10 @@ int main()
 	printf("%d\n",    printf("   printf |%6.5d|%6.5d|\n", 5, -5));
 	printf("%d\n", ft_printf("ft_printf |%6.5d|%6.5d|\n", 5, -5));
 	ft_printf("24----------------------\n");
+
 	printf("%d\n",    printf("   printf |%6.5d|%6.5d|\n", 10255, -1025));
 	printf("%d\n", ft_printf("ft_printf |%6.5d|%6.5d|\n", 10255, -1025));
+
 	ft_printf("25----------------------\n");
 	printf("%d\n",    printf("   printf |%8.5d|%8.3d|\n", 10255, -1025));
 	printf("%d\n", ft_printf("ft_printf |%8.5d|%8.3d|\n", 10255, -1025));
@@ -381,9 +383,11 @@ int main()
 	printf("%d\n",    printf("   printf |%-*d|%-*d|\n", 0, 0, 0, 0));
 	printf("%d\n", ft_printf("ft_printf |%-*d|%-*d|\n", 0, 0, 0, 0));
 	ft_printf ("122-----------------------------------\n");
+
 	printf("%d\n",    printf("   printf |%-*d|%-*d|\n", -5, 1, -5, -1));
 	printf("%d\n", ft_printf("ft_printf |%-*d|%-*d|\n", -5, 1, -5, -1));
 	ft_printf ("123-----------------------------------\n");
+
 	printf("%d\n",    printf("   printf |%-*d|%-*d|\n", 5, 0, 5, -0));
 	printf("%d\n", ft_printf("ft_printf |%-*d|%-*d|\n", 5, 0, 5, -0));
 	ft_printf ("124-----------------------------------\n");
@@ -396,9 +400,6 @@ int main()
 	printf("%d\n",    printf("   printf |%-*d|%-*d|\n",  20, 10012, 20, -10012));
 	printf("%d\n", ft_printf("ft_printf |%-*d|%-*d|\n",  20, 10012, 20, -10012));
 	ft_printf ("127-----------------------------------\n");
-	printf("%d\n",    printf("   printf |%-*d|%-*d|\n",  -20, 10012, -20, -10012));
-	printf("%d\n", ft_printf("ft_printf |%-*d|%-*d|\n",  -20, 10012, -20, -10012));
-	ft_printf ("128-----------------------------------\n");
 
 	printf("%d\n",    printf("   printf |%0*.d|%0*.d|\n",  -3, 10012, -3, -10012));
 	printf("%d\n", ft_printf("ft_printf |%0*.d|%0*.d|\n",  -3, 10012, -3, -10012));
@@ -508,8 +509,10 @@ int main()
 	printf("%d\n",    printf("   printf |%0*.*d|%0*.*d|\n", 15, -5, 50, 15, -5, -50));
 	printf("%d\n", ft_printf("ft_printf |%0*.*d|%0*.*d|\n", 15, -5, 50, 15, -5, -50));
 	ft_printf ("165-----------------------------------\n");
+
 	printf("%d\n",    printf("   printf |%0*.*d|%0*.*d|\n", -15, -5, 50, -15, -5, -50));
 	printf("%d\n", ft_printf("ft_printf |%0*.*d|%0*.*d|\n", -15, -5, 50, -15, -5, -50));
+
 	ft_printf ("166-----------------------------------\n");
 	printf("%d\n",    printf("   printf |%0*.*d|%0*.*d|\n", -10, 5, 50, -10, 5, 50));
 	printf("%d\n", ft_printf("ft_printf |%0*.*d|%0*.*d|\n", -10, 5, 50, -10, 5, 50));
@@ -565,11 +568,13 @@ int main()
 	printf("%d\n",    printf("   printf |%*s|%*s|\n", 8, s, 8, p));
 	printf("%d\n", ft_printf("ft_printf |%*s|%*s|\n", 8, s, 8, p));
 	ft_printf ("183-----------------------------------\n");
+
 	printf("%d\n",    printf("   printf |%*s|%*s|\n", -8, s, -8, p));
-	printf("%d\n", ft_printf("ft_printf |%*s|%*s|\n", -8, s, -8, p));	
+	printf("%d\n", ft_printf("ft_printf |%*s|%*s|\n", -8, s, -8, p));
 	ft_printf ("184-----------------------------------\n");
+
 	printf("%d\n",    printf("   printf |%-*s|%-*s|\n", 8, s, 8, p));
-	printf("%d\n", ft_printf("ft_printf |%-*s|%-*s|\n", 8, s, 8, p));	
+	printf("%d\n", ft_printf("ft_printf |%-*s|%-*s|\n", 8, s, 8, p));
 	ft_printf ("185-----------------------------------\n");
 	printf("%d\n",    printf("   printf |%-*.*s|%-*.*s|\n", -8, -5, s, -8, -5, p));
 	printf("%d\n", ft_printf("ft_printf |%-*.*s|%-*.*s|\n", -8, -5, s, -8, -5, p));	
@@ -669,7 +674,7 @@ int main()
 	
 	printf("%d\n",    printf("   printf |a%3.0xa|a%3.0da|\n", 100, 100));
 	printf("%d\n", ft_printf("ft_printf |a%3.0xa|a%3.0da|\n", 100, 100));
-	ft_printf ("214-----------------------------------\n");*/
+	ft_printf ("214-----------------------------------\n");
 	
 	printf("%d\n",    printf("   printf |%03.0d|a%03.0da|\n", 100, 100));
 	printf("%d\n", ft_printf("ft_printf |%03.0d|a%03.0da|\n", 100, 100));
@@ -682,6 +687,6 @@ int main()
 	ft_printf ("216-----------------------------------\n");
 	printf("%d\n",    printf("   printf |%020.*d|\n", -7, 20));
 	printf("%d\n", ft_printf("ft_printf |%020.*d|\n", -7, 20));
-
+*/
 			 return 0;
 }

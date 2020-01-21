@@ -6,7 +6,7 @@
 /*   By: hmoumani <hmoumani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/23 16:56:08 by hmoumani          #+#    #+#             */
-/*   Updated: 2020/01/21 03:28:35 by hmoumani         ###   ########.fr       */
+/*   Updated: 2020/01/21 20:01:43 by hmoumani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,34 +38,6 @@ char	*ft_get_string(const char *s, int *j)
 	return (news);
 }
 
-void	ft_flags(char **s, int cas)
-{
-	if (cas)
-		while (1)
-		{
-			if (**s == '+')
-				g_flags.plus = 1;
-			else if (**s == '0')
-				g_flags.fill = '0';
-			else if (**s == '-' && (g_flags.conv == 'p' || g_flags.conv == 'c'))
-				g_flags.minus = 1;
-			else if (**s == '-' && g_flags.conv == '%')
-				g_flags.minus = 1;
-			else
-				break ;
-			(*s)++;
-		}
-	else
-		while (1)
-		{
-			if (**s == '-' && *(*s + 1) == '-' && g_flags.conv == 'd')
-				g_flags.minus = 1;
-			else
-				break ;
-			(*s)++;
-		}
-}
-
 void	ft_haspoint(char *s, char *p, va_list *args)
 {
 	int i;
@@ -83,6 +55,7 @@ void	ft_haspoint(char *s, char *p, va_list *args)
 		g_flags.prec = va_arg(*args, int);
 	else
 		g_flags.prec = ft_atoi(p);
+	(g_flags.minus && g_flags.width > 0) ? g_flags.width *= -1 : 1;
 }
 
 void	ft_manage_data(char *s, va_list *args)
@@ -95,13 +68,17 @@ void	ft_manage_data(char *s, va_list *args)
 		ft_haspoint(s, p, args);
 	else
 	{
+		ft_flags(&s, 0);
 		if (s[i] == '*')
+		{
 			g_flags.width = va_arg(*args, int);
+			(g_flags.width < 0 && g_flags.fill == '0') ? g_flags.fill = ' ' : 1;
+			(g_flags.minus && g_flags.width > 0 && (g_flags.conv == 'd' || g_flags.conv == 's')) ? g_flags.width *= -1 : 1;
+		}
 		else
 		{
-			ft_flags(&s, 0);
 			g_flags.width = ft_atoi(s);
-			g_flags.fill = (s[i] == '0' && g_flags.width) ? '0' : ' ';
+			(s[i] == '0' && g_flags.width) ? g_flags.fill = '0' : ' ';
 		}
 	}
 }
