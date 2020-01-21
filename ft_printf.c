@@ -6,7 +6,7 @@
 /*   By: hmoumani <hmoumani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/23 20:41:45 by hmoumani          #+#    #+#             */
-/*   Updated: 2020/01/21 00:45:14 by hmoumani         ###   ########.fr       */
+/*   Updated: 2020/01/21 03:26:39 by hmoumani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,29 @@
 
 void	ft_init_flags(void)
 {
-	flags = (t_flags){ 0, 0, 0, ' ', 0, 0, 0};
+	g_flags = (t_flags){ 0, 0, 0, ' ', 0, 0, 0};
 }
 
-void	ft_redirect_conversion(va_list *args)
+int		ft_redirect_conversion(va_list *args)
 {
-	if (flags.conv == 'd' || flags.conv == 'i')
-		ft_printd(args);
-	if (flags.conv == 's')
-		ft_prints(args);
-	if (flags.conv == 'c' || flags.conv == '%')
+	if (g_flags.conv == 'd' || g_flags.conv == 'i')
+		if (!(ft_printd(args)))
+			return (0);
+	if (g_flags.conv == 's')
+		if (!(ft_prints(args)))
+			return (0);
+	if (g_flags.conv == 'c' || g_flags.conv == '%')
 		ft_printc(args);
-	if (flags.conv == 'u')
-		ft_printu(args);
-	if (flags.conv == 'p')
-		ft_printp(args);
-	if (flags.conv == 'x' || flags.conv == 'X')
-		ft_printx(args);
+	if (g_flags.conv == 'u')
+		if (!(ft_printu(args)))
+			return (0);
+	if (g_flags.conv == 'p')
+		if (!(ft_printp(args)))
+			return (0);
+	if (g_flags.conv == 'x' || g_flags.conv == 'X')
+		if (!(ft_printx(args)))
+			return (0);
+	return (1);
 }
 
 int		ft_printf(const char *s, ...)
@@ -48,9 +54,10 @@ int		ft_printf(const char *s, ...)
 			ft_putchar_fd(s[i], 1);
 		else
 		{
-			if (ft_collect_data(s, &i, &args) == -1)
+			if (!ft_collect_data(s, &i, &args))
 				return (-1);
-			ft_redirect_conversion(&args);
+			if (!ft_redirect_conversion(&args))
+				return (-1);
 		}
 		i++;
 	}

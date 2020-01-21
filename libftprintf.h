@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libftprintf.h                                        :+:      :+:    :+:   */
+/*   libftprintf.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmoumani <hmoumani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 00:22:12 by hmoumani          #+#    #+#             */
-/*   Updated: 2020/01/14 22:32:52 by hmoumani         ###   ########.fr       */
+/*   Updated: 2020/01/21 03:27:17 by hmoumani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PRINTF_H
-# define PRINTF_H
+#ifndef LIBFTPRINTF_H
+# define LIBFTPRINTF_H
 
 # include <unistd.h>
 # include <stdlib.h>
@@ -28,9 +28,8 @@ typedef	struct		s_flgs
 	int				minus;
 	int				haspoint;
 }					t_flags;
-t_flags				flags;
+t_flags				g_flags;
 int					g_size;
-int				 	count;
 int					ft_atoi(const char *s);
 void				*ft_calloc(size_t count, size_t size);
 int					ft_isalpha(int c);
@@ -44,12 +43,12 @@ void				ft_putnbr_fd(long n, int fd);
 int					ft_toupper(int c);
 int					ft_printf(const char *s, ...);
 int					ft_collect_data(const char *s, int *i, va_list *args);
-void	        	ft_printp(va_list *args);
-void				ft_prints(va_list *args);
-void				ft_printu(va_list *args);
+int					ft_printp(va_list *args);
+int					ft_prints(va_list *args);
+int					ft_printu(va_list *args);
 void				ft_printc(va_list *args);
-void				ft_printd(va_list *args);
-void            	ft_printx(va_list *args);
+int					ft_printd(va_list *args);
+int					ft_printx(va_list *args);
 char				*ft_dectohexa(size_t n);
 char				*ft_strchr(const char *s, int c);
 int					ft_absolute_val(int n);

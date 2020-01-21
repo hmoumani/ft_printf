@@ -6,7 +6,7 @@
 /*   By: hmoumani <hmoumani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/23 16:59:46 by hmoumani          #+#    #+#             */
-/*   Updated: 2020/01/21 00:53:51 by hmoumani         ###   ########.fr       */
+/*   Updated: 2020/01/21 03:28:06 by hmoumani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	ft_putp_fd(char *s, int fd, size_t p)
 	int i;
 
 	i = 0;
-	if (!p && flags.haspoint)
+	if (!p && g_flags.haspoint)
 	{
 		ft_putstr_fd("0x", 1);
 	}
@@ -35,18 +35,18 @@ void	ft_width_p(char *s, int len, size_t p)
 {
 	int width;
 
-	width = (flags.width >= len) ? flags.width - len : flags.width + len;
-	if (!p && flags.haspoint && width > 0)
+	width = (g_flags.width >= len) ? g_flags.width - len : g_flags.width + len;
+	if (!p && g_flags.haspoint && width > 0)
 		width++;
-	else if (!p && flags.haspoint && width < 0)
+	else if (!p && g_flags.haspoint && width < 0)
 		width--;
-	(flags.minus && flags.width > 0) ? width = (-1 * width) + 1 : 1;
-	if (flags.width >= len && flags.width)
+	(g_flags.minus && g_flags.width > 0) ? width = (-1 * width) + 1 : 1;
+	if (g_flags.width >= len && g_flags.width)
 		while (--width >= 0)
 			ft_putchar_fd(' ', 1);
 	ft_putp_fd(s, 1, p);
-	if (((flags.width < 0 || (flags.minus && flags.haspoint)) || \
-	(flags.haspoint && flags.width < 0)) && flags.width)
+	if (((g_flags.width < 0 || (g_flags.minus && g_flags.haspoint)) || \
+	(g_flags.haspoint && g_flags.width < 0)) && g_flags.width)
 		while (++width <= 0)
 			ft_putchar_fd(' ', 1);
 }
@@ -69,7 +69,7 @@ char	*ft_dectohexa(size_t n)
 		else
 			hexadecinum[i] = temp + 55;
 		n = n / 16;
-		if (flags.conv == 'x' || flags.conv == 'p')
+		if (g_flags.conv == 'x' || g_flags.conv == 'p')
 			hexadecinum[i] = ft_tolower(hexadecinum[i]);
 		i++;
 	}
@@ -77,17 +77,16 @@ char	*ft_dectohexa(size_t n)
 	return (hexadecinum);
 }
 
-void	ft_printp(va_list *args)
+int		ft_printp(va_list *args)
 {
 	size_t			p;
 	char			*s;
 
 	p = va_arg(*args, size_t);
-	s = ft_dectohexa(p);
-	(flags.prec < 0) ? flags.haspoint = 0 : 1;
-	if (!s)
-	{
-		s = ft_strdup("(null)");
-	}
+	if (!(s = ft_dectohexa(p)))
+		return (0);
+	(g_flags.prec < 0) ? g_flags.haspoint = 0 : 1;
 	ft_width_p(s, (int)ft_strlen(s) + 2, p);
+	free(s);
+	return (1);
 }

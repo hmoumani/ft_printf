@@ -6,7 +6,7 @@
 /*   By: hmoumani <hmoumani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/23 17:05:31 by hmoumani          #+#    #+#             */
-/*   Updated: 2020/01/21 00:27:40 by hmoumani         ###   ########.fr       */
+/*   Updated: 2020/01/21 03:26:49 by hmoumani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_puts_fd(char *s, int fd, int prec)
 
 	i = 0;
 	prec = ft_absolute_val(prec);
-	while (s[i] && (i < prec || !flags.haspoint))
+	while (s[i] && (i < prec || !g_flags.haspoint))
 	{
 		g_size += write(fd, &s[i++], 1);
 	}
@@ -28,26 +28,33 @@ void	ft_width_s(char *s, int len)
 {
 	int width;
 
-	len = (len > flags.prec && flags.haspoint) ? flags.prec : len;
-	width = (flags.width >= len) ? flags.width - len : flags.width + len;
-	if (flags.width >= len && flags.width)
+	len = (len > g_flags.prec && g_flags.haspoint) ? g_flags.prec : len;
+	width = (g_flags.width >= len) ? g_flags.width - len : g_flags.width + len;
+	if (g_flags.width >= len && g_flags.width)
 		while (--width >= 0)
 			ft_putchar_fd(' ', 1);
-	ft_puts_fd(s, 1, flags.prec);
-	if (flags.width < len && flags.width)
+	ft_puts_fd(s, 1, g_flags.prec);
+	if (g_flags.width < len && g_flags.width)
 		while (++width <= 0)
 			ft_putchar_fd(' ', 1);
 }
 
-void	ft_prints(va_list *args)
+int		ft_prints(va_list *args)
 {
 	char *s;
 
 	s = va_arg(*args, char *);
-	(flags.prec < 0) ? flags.haspoint = 0 : 1;
+	(g_flags.prec < 0) ? g_flags.haspoint = 0 : 1;
 	if (!s)
 	{
-		s = ft_strdup("(null)");
+		if (!(s = ft_strdup("(null)")))
+			return (0);
+		ft_width_s(s, (int)ft_strlen(s));
+		free(s);
 	}
-	ft_width_s(s, (int)ft_strlen(s));
+	else
+	{
+		ft_width_s(s, (int)ft_strlen(s));
+	}
+	return (1);
 }

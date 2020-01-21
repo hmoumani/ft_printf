@@ -6,11 +6,11 @@
 /*   By: hmoumani <hmoumani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/23 16:56:08 by hmoumani          #+#    #+#             */
-/*   Updated: 2020/01/21 00:25:43 by hmoumani         ###   ########.fr       */
+/*   Updated: 2020/01/21 03:28:35 by hmoumani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libftprintf.h"
 
 char	*ft_get_string(const char *s, int *j)
 {
@@ -23,9 +23,10 @@ char	*ft_get_string(const char *s, int *j)
 	s[i] != 'i' && s[i] != 'x' && s[i] != 'X' && s[i] != 'p' && s[i] != '%')
 		i++;
 	(*j) = (*j) + i;
-	news = malloc(i + 1);
+	if (!(news = malloc(i + 1)))
+		return (NULL);
 	news[i] = 0;
-	flags.conv = s[i];
+	g_flags.conv = s[i];
 	i = 0;
 	while (s[i] != 'd' && s[i] != 'c' && s[i] != 's' && s[i] != 'u' && \
 	s[i] != 'i' && s[i] != 'x' && s[i] != 'X' && s[i] != 'p' && s[i] != '%')
@@ -43,13 +44,13 @@ void	ft_flags(char **s, int cas)
 		while (1)
 		{
 			if (**s == '+')
-				flags.plus = 1;
+				g_flags.plus = 1;
 			else if (**s == '0')
-				flags.fill = '0';
-			else if (**s == '-' && (flags.conv == 'p' || flags.conv == 'c'))
-				flags.minus = 1;
-			else if (**s == '-' && flags.conv == '%')
-				flags.minus = 1;
+				g_flags.fill = '0';
+			else if (**s == '-' && (g_flags.conv == 'p' || g_flags.conv == 'c'))
+				g_flags.minus = 1;
+			else if (**s == '-' && g_flags.conv == '%')
+				g_flags.minus = 1;
 			else
 				break ;
 			(*s)++;
@@ -57,8 +58,8 @@ void	ft_flags(char **s, int cas)
 	else
 		while (1)
 		{
-			if (**s == '-' && *(*s + 1) == '-' && flags.conv == 'd')
-				flags.minus = 1;
+			if (**s == '-' && *(*s + 1) == '-' && g_flags.conv == 'd')
+				g_flags.minus = 1;
 			else
 				break ;
 			(*s)++;
@@ -72,16 +73,16 @@ void	ft_haspoint(char *s, char *p, va_list *args)
 	i = 0;
 	*p = 0;
 	p = p + 1;
-	flags.haspoint = 1;
+	g_flags.haspoint = 1;
 	ft_flags(&s, 1);
 	if (s[i] == '*')
-		flags.width = va_arg(*args, int);
+		g_flags.width = va_arg(*args, int);
 	else
-		flags.width = ft_atoi(s);
+		g_flags.width = ft_atoi(s);
 	if (*p == '*')
-		flags.prec = va_arg(*args, int);
+		g_flags.prec = va_arg(*args, int);
 	else
-		flags.prec = ft_atoi(p);
+		g_flags.prec = ft_atoi(p);
 }
 
 void	ft_manage_data(char *s, va_list *args)
@@ -95,12 +96,12 @@ void	ft_manage_data(char *s, va_list *args)
 	else
 	{
 		if (s[i] == '*')
-			flags.width = va_arg(*args, int);
+			g_flags.width = va_arg(*args, int);
 		else
 		{
 			ft_flags(&s, 0);
-			flags.width = ft_atoi(s);
-			flags.fill = (s[i] == '0' && flags.width) ? '0' : ' ';
+			g_flags.width = ft_atoi(s);
+			g_flags.fill = (s[i] == '0' && g_flags.width) ? '0' : ' ';
 		}
 	}
 }
@@ -110,7 +111,7 @@ int		ft_collect_data(const char *s, int *i, va_list *args)
 	char *newstr;
 
 	if (!(newstr = ft_get_string(s + *i + 1, i)))
-		return (-1);
+		return (0);
 	ft_manage_data(newstr, args);
 	(*i)++;
 	free(newstr);
