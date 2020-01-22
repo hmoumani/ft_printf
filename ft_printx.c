@@ -6,24 +6,24 @@
 /*   By: hmoumani <hmoumani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/23 21:23:26 by hmoumani          #+#    #+#             */
-/*   Updated: 2020/01/21 20:15:51 by hmoumani         ###   ########.fr       */
+/*   Updated: 2020/01/22 02:50:47 by hmoumani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-static	void	ft_print_precx(int len, char *s)
+void			ft_print_precx(int len, char *s, int i)
 {
-	int		i;
 	int		width;
 
 	width = (g_flags.prec > len) ? ft_abs(g_flags.width) - \
 	(ft_abs(g_flags.width) - g_flags.prec) - 1 : \
-	ft_abs(g_flags.width) - len + 1;
+	ft_abs(g_flags.width) - ft_getmax(g_flags.prec, len) + 1;
+	((g_flags.minus || g_flags.width < 0) && width < 0 && g_flags.prec > 0) ? \
+	width = ft_abs(g_flags.width) - ft_getmax(g_flags.prec, len) : 1;
 	(g_flags.prec > 0 && ft_abs(g_flags.prec) <= len && \
 	g_flags.width > len && g_flags.fill == '0') ? g_flags.fill = ' ' : 1;
 	i = 0;
-	(s[0] == '-') ? width++ : 1;
 	if (g_flags.prec > len && width > 0)
 		while (++width < g_flags.width)
 			g_size += write(1, " ", 1);
@@ -83,7 +83,7 @@ static	void	ft_width_x(char *s, int num)
 	}
 	else
 	{
-		ft_print_precx((int)len, s);
+		ft_print_precx((int)len, s, 0);
 	}
 }
 

@@ -6,20 +6,21 @@
 /*   By: hmoumani <hmoumani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/23 17:08:49 by hmoumani          #+#    #+#             */
-/*   Updated: 2020/01/21 20:15:50 by hmoumani         ###   ########.fr       */
+/*   Updated: 2020/01/22 02:46:44 by hmoumani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-void	ft_print_precu(int len, char *s)
+void	ft_print_precu(int len, char *s, int i)
 {
-	int		i;
 	int		width;
 
 	width = (g_flags.prec > len) ? ft_abs(g_flags.width) - \
 	(ft_abs(g_flags.width) - g_flags.prec) - 1 : \
-	ft_abs(g_flags.width) - len + 1;
+	ft_abs(g_flags.width) - ft_getmax(g_flags.prec, len) + 1;
+	((g_flags.minus || g_flags.width < 0) && width < 0 && g_flags.prec > 0) ? \
+	width = ft_abs(g_flags.width) - ft_getmax(g_flags.prec, len) : 1;
 	(g_flags.prec > 0 && ft_abs(g_flags.prec) <= len && \
 	g_flags.width > len && g_flags.fill == '0') ? g_flags.fill = ' ' : 1;
 	i = 0;
@@ -82,7 +83,7 @@ void	ft_width_u(char *s, int num)
 	}
 	else
 	{
-		ft_print_precu((int)len, s);
+		ft_print_precu((int)len, s, 0);
 	}
 }
 
